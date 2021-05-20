@@ -1,17 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import BookCard from './BookCard'
+
+class App extends React.Component {
+    state = {
+
+     };
+
+    componentDidMount() { 
+
+    };
+
+    render() {  
+
+        return (
+            <div>
+                <div className='card-wrapper'>
+                    
+                </div>
+                <BookCard 
+                    bookTitle="Where the Red Fern Grows"
+                    author="Wilson Rawls"
+                    publishedYear="1961"
+                    publishedBy="Doubleday"
+                    pageCount="245"
+                    ISBN="0-440-22814-X">
+                </BookCard>
+            </div>
+        )
+    }
+}
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <App />,
+    document.querySelector('#root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
