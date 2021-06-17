@@ -1,0 +1,47 @@
+:root {
+    --primary-background: rgba(200, 200, 200, 0.8);
+
+}
+
+.header {
+    text-align: center;
+    justify-content: center;
+    padding: 10px 0 10px 0;
+    height: 100px;
+    background-color: rgba(200, 200, 200, 0.8);
+
+}
+
+.app-body {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: 1fr 1fr 8fr 1fr;
+    background-color: var(--primary-background);
+}
+
+.header {
+    grid-column: 1/13;
+    grid-row: 1/2;
+}
+
+.menu {
+    grid-column: 1/2;
+    grid-row: 2/4;
+}
+
+.search-bar {
+    grid-column: 2/13;
+    grid-row: 2/3;
+}
+
+.book-list {
+    grid-column: 2/13;
+    grid-row: 3/4;
+}
+
+.footer {
+    grid-column: 1/13;
+    grid-row: 4/5;
+}
