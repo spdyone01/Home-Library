@@ -17,8 +17,8 @@ class App extends React.Component {
     state = { books: '' };
 
     onSearchSubmit = async (term) => {
-        const response = await OpenLibrary.get('/b/id/240727-S.jpg', {
-            params: { query: term }
+        const response = await OpenLibrary.get(`/search.json?q=${term}`, {
+            params: ''
         })
 
         this.setState({ books: response })
