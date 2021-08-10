@@ -14,7 +14,8 @@ import Footer from './Footer';
 import '../styles/App.css';
 
 class App extends React.Component {
-    state = { searchResults: '', bookList: [] };
+    state = { searchResults: '', bookList: []
+    };
 
     onSearchSubmit = async (term) => {
         const response = await OpenLibrary.get(`/search.json?q=${term}`, {
@@ -36,8 +37,10 @@ class App extends React.Component {
             <div className='app-body'>
                 <Header className='Header'/>
                 <Menu />
-                <SearchBar onSubmit={ this.onSearchSubmit }/>
-                <BookList />
+                <SearchBar 
+                    onSubmit={ this.onSearchSubmit }  
+                />
+                <BookList bookList= { this.state.bookList }/>
                 <Footer />
             </div>
         )

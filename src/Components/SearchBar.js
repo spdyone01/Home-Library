@@ -21,6 +21,7 @@ class SearchBar extends React.Component { //need a class based component here be
                             type="text" 
                             value={this.state.term} 
                             onChange={(e) => this.setState({ term: e.target.value })}
+                            placeholder='Add a book (note: adds first search result automatically. Will update...'
                         />
                     </div>
                 </form>
