@@ -3,10 +3,7 @@ import BookCard from './BookCard';
 import '../styles/BookList.css';
 
 class BookList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
+    
     render() {
         let bookList = []
 
