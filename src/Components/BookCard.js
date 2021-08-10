@@ -1,17 +1,16 @@
 import React from 'react';
-import bookCover from '../images/Where_the_red_fern_grows.jpg'
+import '../styles/Bookcard.css';
 
 const BookCard = (props) => {
-    
     
     return ( 
         <div className={ "ui link cards" }>
             <div className="card">
                 <div className="image">
-                <img src= {bookCover} alt=""></img>
+                <img src= {props.cover} alt= { props.bookTitle }></img>
                 </div>
                 <div className="content">
-                    <div className="header">{ props.bookTitle }</div>
+                    <div className="main">{ props.bookTitle }</div>
                     <div className="meta">
                         <a>{ props.author}</a>
                     </div>
@@ -25,7 +24,7 @@ const BookCard = (props) => {
                     </span>
                     <span>
                         <i className="book icon"></i>
-                        {props.pageCount} pages
+                        Genre: {props.genre}
                     </span>
                 </div>
             </div>

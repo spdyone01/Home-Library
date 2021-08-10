@@ -1,5 +1,5 @@
 :root {
-    --primary-background: rgba(200, 200, 200, 0.8);
+    --primary-background: rgba(255, 255, 255, 0.8);
 
 }
 
@@ -8,7 +8,7 @@
     justify-content: center;
     padding: 10px 0 10px 0;
     height: 100px;
-    background-color: rgba(200, 200, 200, 0.8);
+    background-color: rgba(255, 255, 255, 0.8);
 
 }
 

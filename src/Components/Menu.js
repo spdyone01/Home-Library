@@ -18,12 +18,13 @@ class Menu extends React.Component {
                     <Hamburger />
                 </div>
                 <h3>My Library</h3>
-                    <ul>
+                    <ul className='menu-items'>
                         <li>Collections</li>
                         <li>Reading Queue</li>
                         <li>Favorites</li>
                         <li>Wanted</li>
                         <li>Read History</li>
+                        <li id='addBookLink' className='addBook'>Add Book</li>
                     </ul>
                 <button>{ this.state.user ? `Sign Out` : `Sign In`}</button>
             </div>
