@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'http://openlibrary.org',
+    baseURL: 'https://openlibrary.org',
     headers: {
 
     } 
