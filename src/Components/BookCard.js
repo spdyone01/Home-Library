@@ -12,7 +12,7 @@ const BookCard = (props) => {
                 <div className="content">
                     <div className="main">{ props.bookTitle }</div>
                     <div className="meta">
-                        <a>{ props.author}</a>
+                        <a href='/'>{ props.author}</a>
                     </div>
                     <div className="description">
                          Published by: { props.publishedBy } in { props.publishedYear} 
