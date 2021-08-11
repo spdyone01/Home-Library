@@ -1,32 +1,29 @@
 import React from 'react';
 import Hamburger from './Hamburger';
 import '../styles/Menu.css';
+import { Link } from 'react-router-dom';
 
 class Menu extends React.Component {
-
-    state = { 
-        user: {
-            name: 'Mia'
-        }
-    }
 
     render() {
         return (
             <div className='menu'>
                 <div className='menu-div'>
-                    <h1>Mia</h1>
+                    <h1>{this.props.user.firstName}</h1>
                     <Hamburger />
                 </div>
-                <h3>My Library</h3>
+                <h3>
+                    <Link to='/' className='navbar-brand'>My Library</Link>
+                </h3>
                     <ul className='menu-items'>
-                        <li>Collections</li>
-                        <li>Reading Queue</li>
-                        <li>Favorites</li>
-                        <li>Wanted</li>
-                        <li>Read History</li>
-                        <li id='addBookLink' className='addBook'>Add Book</li>
+                        <li><Link to='/collections'>Collections</Link></li>
+                        <li><Link to='/readingqueue'>ReadingQueue</Link></li>
+                        <li><Link to='/favorites'>Favorites</Link></li>
+                        <li><Link to='/wanted'>Wanted</Link></li>
+                        <li><Link to='/readhistory'>Read History</Link></li>
+                        <li id='addBookLink' className='addBook'><Link to='/addbook'>Add Book</Link></li>
                     </ul>
-                <button>{ this.state.user ? `Sign Out` : `Sign In`}</button>
+                <button>{ this.props.user ? `Sign Out` : `Sign In`}</button>
             </div>
         )
     }

@@ -1,48 +1,59 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-/* Import api libraries */
-import OpenLibrary from '../api/open_library';
+/* Import Styles */
+import '../styles/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 /* Import Componenets */
 import Header from './Header';
 import Menu from './Menu';
-import SearchBar from './SearchBar';
-import BookList from './BookList';
+import Content from './Content';
 import Footer from './Footer';
 
-/* Import Styles */
-import '../styles/App.css';
+
 
 class App extends React.Component {
-    state = { searchResults: '', bookList: []
-    };
-
-    onSearchSubmit = async (term) => {
-        const response = await OpenLibrary.get(`/search.json?q=${term}`, {
-            params: ''
-        })
-        this.setState({ searchResults: response });
-        const oldBookList = this.state.bookList;
-        const newBook = this.state.searchResults.data.docs[0];
-        oldBookList.push(newBook);
-        this.setState({ bookList: oldBookList });
-        console.log(newBook);
-        console.log(oldBookList);
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            bookList: [],
+            user: {
+                id: 23,
+                firstName: 'Mia',
+                lastName: 'Widdison',
+                userName: 'miakitch23',
+                collections: [],
+                readingQueue: [],
+                favorites: [],
+                wanted: [],
+                readHistory: [],
+                bookListView: 'grid'
+            }
+        };
     }
 
-    render() {  
+    addBook = (book) => {
+        if(book !== 'undefined'){
+            const oldBookList = this.state.bookList;
+            oldBookList.push(book);
+            this.setState({ bookList: oldBookList });
+        }
+    }
+    render() {
 
         return (
-            <div className='app-body'>
-                <Header className='Header'/>
-                <Menu />
-                <SearchBar 
-                    onSubmit={ this.onSearchSubmit }  
-                />
-                <BookList bookList= { this.state.bookList }/>
-                <Footer />
-            </div>
+            <Router>
+                <div className='app-body'>
+                    <Header className='Header'/>
+                    <Menu user={ this.state.user }/>
+                    <Content 
+                        bookList={ this.state.bookList }
+                        addBook={this.addBook}
+                    />
+                    <Footer />
+                </div>
+            </Router>
         )
     }
 }

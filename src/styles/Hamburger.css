@@ -5,6 +5,11 @@
     margin: 5px;
 }
 
+.hamburger-container {
+    display: flex;
+    float: right;
+}
+
 .hamburger {
     position: relative;
     top: 10px;

@@ -8,10 +8,12 @@ class Hamburger extends React.Component {
 
     render() {
         return (
-            <div className='hamburger' onClick={this.menuToggle}>
-                <div className='topbar'></div>
-                <div className='middlebar'></div>
-                <div className='bottombar'></div>
+            <div className='hamburger-container'>
+                <div className='hamburger' onClick={this.menuToggle}>
+                    <div className='topbar'></div>
+                    <div className='middlebar'></div>
+                    <div className='bottombar'></div>
+                </div>
             </div>
         );
     }
