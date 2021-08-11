@@ -45,7 +45,7 @@ class App extends React.Component {
         return (
             <Router>
                 <div className='app-body'>
-                    <Header className='Header'/>
+                    <Header className='Header' userName={ this.state.user.userName }/>
                     <Menu user={ this.state.user }/>
                     <Content 
                         bookList={ this.state.bookList }

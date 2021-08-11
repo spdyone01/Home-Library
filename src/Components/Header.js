@@ -5,7 +5,7 @@ class Header extends React.Component {
 
     render() {
         return (
-            <h1 className='header'>Mia's Library</h1>
+            <h1 className='header'>{this.props.userName}'s Library</h1>
         )
     }
 }
