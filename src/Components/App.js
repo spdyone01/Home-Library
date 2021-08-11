@@ -20,9 +20,9 @@ class App extends React.Component {
             bookList: [],
             user: {
                 id: 23,
-                firstName: 'Mia',
-                lastName: 'Widdison',
-                userName: 'miakitch23',
+                firstName: 'userFirstName',
+                lastName: 'userLastName',
+                userName: 'userName',
                 collections: [],
                 readingQueue: [],
                 favorites: [],

@@ -45,6 +45,7 @@ class Content extends React.Component {
                 <SearchBar 
                     onSubmit={ this.onSearchSubmit }  
                 />
+                <Router></Router>
                 <Switch>
                     <Route 
                         path='/' exact
