@@ -20,77 +20,104 @@ class Content extends React.Component {
         super(props);
         this.state = {
             searchResults: '',
+            searchItems: [],
             bookList: []
         }
     }
     
     onSearchSubmit = async (term) => {
-        const response = await OpenLibrary.get(`/search.json?q=${term}`, {
+        const response = await OpenLibrary.get(`/search.json?q=${term}&limit=5`, {
             params: ''
         })
-        this.setState({ searchResults: response });
+        // this.setState({ searchResults: response });
+        this.setState({ searchItems: response.data.docs })
 
-        // old method
-        
-        this.props.addBook(this.state.searchResults.data.docs[0]);
+        // Return first result for now - add selection later
+        this.props.addBookToLibrary(this.state.searchItems[0]);
+    }
 
-        // console.log(newBook);
-        // console.log(oldBookList);
+    filterBooks = () => {
+        console.log('I will filter a book eventually')
     }
 
     render() {
+
+        console.log(this.props)
         
         return(
             <div className='content'>
-                <SearchBar 
-                    onSubmit={ this.onSearchSubmit }  
-                />
-                <Router></Router>
-                <Switch>
-                    <Route 
-                        path='/' exact
-                        render={() => (
-                            <BookList bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/collections' exact
-                        render={() => (
-                            <Collections bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/readingqueue' exact
-                        render={() => (
-                            <ReadingQueue bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/favorites' exact
-                        render={() => (
-                            <Favorites bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/wanted' exact
-                        render={() => (
-                            <Wanted bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/readhistory' exact
-                        render={() => (
-                            <ReadHistory bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route 
-                        path='/addbook' exact
-                        render={() => (
-                            <AddBook bookList={this.props.bookList} isAuthed={true}/>
-                        )}
-                    />
-                    <Route component={page404}/>
-                </Switch>
+                    <Switch>    
+                        <Route
+                            path='/addbook' exact
+                            render={() => (
+                                <SearchBar 
+                                    label= { 'Book Search' }
+                                    onSearchSubmit={ this.onSearchSubmit }
+                                />
+                            )}
+                        />
+                        <Route
+                            path='/'
+                            render={() => (
+                                <SearchBar 
+                                    label= { 'Book Filter' }
+                                    onSubmit={ this.filterBooks }
+                                    searchType={ 'Title' }  
+                                />
+                            )}
+                        />
+                    </Switch>
+
+                    <Switch>
+                        <Route 
+                            path='/' exact
+                            render={() => (
+                                <BookList bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/collections' exact
+                            render={() => (
+                                <Collections bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/readingqueue' exact
+                            render={() => (
+                                <ReadingQueue bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/favorites' exact
+                            render={() => (
+                                <Favorites bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/wanted' exact
+                            render={() => (
+                                <Wanted bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/readhistory' exact
+                            render={() => (
+                                <ReadHistory bookList={this.props.bookList} isAuthed={true}/>
+                            )}
+                        />
+                        <Route 
+                            path='/addbook' exact
+                            render={() => (
+                                <AddBook
+                                    bookList={ this.props.bookList } 
+                                    isAuthed={ true }
+                                    addBook={ this.props.addBookToLibrary }
+                                    searchItems= { this.state.searchItems }
+                                />
+                            )}
+                        />
+                        <Route component={page404}/>
+                    </Switch>
             </div>
         )
     }

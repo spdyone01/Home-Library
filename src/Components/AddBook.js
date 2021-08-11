@@ -1,12 +1,21 @@
 import React from 'react';
 
+// Import components
+import AddBookCard from './AddBookCard';
+import '../styles/AddBookCard.css';
+
 class AddBook extends React.Component {
-    
+
     render() {
+        console.log(this.props)
         
         return(
             <div className='content'>
-                This is the AddBook Component
+                <AddBookCard 
+                    searchItems={ this.props.searchItems } 
+                    addBookToLibrary= { this.props.addBook }
+                    bookList= { this.props.bookList }
+                />
             </div>
         )
     }

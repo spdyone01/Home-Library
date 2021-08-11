@@ -33,11 +33,38 @@ class App extends React.Component {
         };
     }
 
-    addBook = (book) => {
+    diff = (book, bookList) => {
+        var ret = [];
+
+        function checkExists(bookList, newBookIsbn) {
+            if(bookList.length >= 1){
+                console.log(bookList)
+                return bookList.some(function(book) {
+                    return book.isbn.some(function(isbn) {
+                        return isbn === newBookIsbn;
+                    })
+                });
+            } else {
+                return false;
+            }
+        }
+
+        checkExists(bookList, book.isbn[0])
+        ret = checkExists(bookList, book.isbn[0])
+        return ret;
+    };
+
+    addBookToLibrary = (book) => {
         if(book !== 'undefined'){
-            const oldBookList = this.state.bookList;
-            oldBookList.push(book);
-            this.setState({ bookList: oldBookList });
+            const exists = this.diff(book, this.state.bookList)
+            
+            if(!exists){
+                const oldBookList = this.state.bookList;
+                oldBookList.push(book);
+                this.setState({ bookList: oldBookList });
+            } else {
+                alert('Book already in library!')
+            }
         }
     }
     render() {
@@ -49,7 +76,7 @@ class App extends React.Component {
                     <Menu user={ this.state.user }/>
                     <Content 
                         bookList={ this.state.bookList }
-                        addBook={this.addBook}
+                        addBookToLibrary={this.addBookToLibrary}
                     />
                     <Footer />
                 </div>
