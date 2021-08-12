@@ -23,7 +23,6 @@
 .hamburger:hover
 .bottombar {
     background-color: darkslategray;
-    width:32px;
-    height: 5px;
+    transform: scale(1.1);
 }
 

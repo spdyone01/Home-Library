@@ -22,19 +22,17 @@ class Content extends React.Component {
             searchResults: '',
             searchItems: [],
             bookList: [],
-            filterText: ''
+            filterText: '',
+            searchType: ['title', 'Author', 'Genre', 'Date Added']
         }
     }
     
-    onSearchSubmit = async (term) => {
-        const response = await OpenLibrary.get(`/search.json?q=${term}&limit=5`, {
+    onSearchSubmit = async (term, searchType) => {
+        const response = await OpenLibrary.get(`/search.json?${searchType}=${term}&limit=5`, {
             params: ''
         })
         // this.setState({ searchResults: response });
         this.setState({ searchItems: response.data.docs })
-
-        // Return first result for now - add selection later
-        this.props.addBookToLibrary(this.state.searchItems[0]);
     }
 
     filterBooks = (term) => {
@@ -54,6 +52,7 @@ class Content extends React.Component {
                             render={() => (
                                 <SearchBar 
                                     label= { 'Book Search' }
+                                    searchType = { this.state.searchType[0] }
                                     onSearchSubmit={ this.onSearchSubmit }
                                 />
                             )}
@@ -63,8 +62,8 @@ class Content extends React.Component {
                             render={() => (
                                 <SearchBar 
                                     label= { 'Book Filter' }
-                                    onSubmit={ this.filterBooks }
-                                    searchType={ 'Title' }  
+                                    onFilterChange={ this.filterBooks }
+                                    searchType={ this.state.searchType[0] }  
                                 />
                             )}
                         />

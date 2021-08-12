@@ -3,6 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './Components/App'
 
 ReactDOM.render(
-    <App />,
+    <App className='container-fluid'/>,
     document.querySelector('#root')
 );

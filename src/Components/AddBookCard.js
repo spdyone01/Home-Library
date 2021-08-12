@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import React from 'react';
 
 class AddBookCard extends React.Component {
@@ -15,9 +14,10 @@ class AddBookCard extends React.Component {
     }
 
 
-    addBook = (result) => {
-        console.log(result)
-        this.props.addBookToLibrary(result);
+    addBook = (book) => {
+        console.log(book)
+        // console.log(book)
+        this.props.addBookToLibrary(book);
     }
 
     render() {
@@ -40,7 +40,7 @@ class AddBookCard extends React.Component {
                             </div>
                             <div className="card-footer">
                                 <small className="text-muted">Last updated 3 mins ago</small>
-                                <button onClick={this.addBook} id={result.isbn[0]}>Add Book to library</button>
+                                <button onClick={this.addBook.bind(this, result)} id={result.isbn[0]}>Add Book to library</button>
                                 <button>Add Book to Wishlist</button>
                             </div>
                         </div>

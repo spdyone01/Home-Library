@@ -3,13 +3,14 @@ import '../styles/Hamburger.css';
 
 class Hamburger extends React.Component {
     menuToggle() {
-        console.log('menuToggle clicked')
+        const menuIcon = document.getElementById('hamburger')
+        menuIcon.classList.toggle('active')
     }
 
     render() {
         return (
             <div className='hamburger-container'>
-                <div className='hamburger' onClick={this.menuToggle}>
+                <div className='hamburger' id='hamburger' onClick={this.menuToggle}>
                     <div className='topbar'></div>
                     <div className='middlebar'></div>
                     <div className='bottombar'></div>
