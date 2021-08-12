@@ -35,6 +35,8 @@ class App extends React.Component {
 
     diff = (book, bookList) => {
         var ret = [];
+        console.log(book)
+        console.log(bookList)
 
         function checkExists(bookList, newBookIsbn) {
             if(bookList.length >= 1){
@@ -49,7 +51,7 @@ class App extends React.Component {
             }
         }
 
-        checkExists(bookList, book.isbn[0])
+        // checkExists(bookList, book.isbn[0])
         ret = checkExists(bookList, book.isbn[0])
         return ret;
     };

@@ -7,13 +7,17 @@ class AddBookCard extends React.Component {
         this.state= {
             ISBNS: [],
             searchISBNS: [],
-            searchResults: []
+            searchResults: [] 
         }
+        this.addBook = this
+            .addBook
+            .bind(this)
     }
 
 
-    addBook = () => {
-        console.log('hi')
+    addBook = (result) => {
+        console.log(result)
+        this.props.addBookToLibrary(result);
     }
 
     render() {
@@ -36,7 +40,7 @@ class AddBookCard extends React.Component {
                             </div>
                             <div className="card-footer">
                                 <small className="text-muted">Last updated 3 mins ago</small>
-                                <button onClick={this.addBook()} id={result.isbn[0]}>Add Book to library</button>
+                                <button onClick={this.addBook} id={result.isbn[0]}>Add Book to library</button>
                                 <button>Add Book to Wishlist</button>
                             </div>
                         </div>

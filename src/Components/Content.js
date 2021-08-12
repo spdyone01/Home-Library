@@ -21,7 +21,8 @@ class Content extends React.Component {
         this.state = {
             searchResults: '',
             searchItems: [],
-            bookList: []
+            bookList: [],
+            filterText: ''
         }
     }
     
@@ -36,8 +37,9 @@ class Content extends React.Component {
         this.props.addBookToLibrary(this.state.searchItems[0]);
     }
 
-    filterBooks = () => {
-        console.log('I will filter a book eventually')
+    filterBooks = (term) => {
+        this.setState({ filterText: term})
+        console.log(this.state.filterText)
     }
 
     render() {
