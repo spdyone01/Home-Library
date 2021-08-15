@@ -10,31 +10,42 @@
     font-size: large;
     width: 100%;
 }
-.menu-items a {
+.menu-items a{
     padding: 5px 0px 5px 0px;
     text-decoration: none;
     color: black;
 }
 
-.menu-items a:hover {
+/* .menu-items a:hover {
     cursor: pointer;
-    /* background: rgba(0, 0, 0, .2); */
     width:100%;
-    background: rgba(200, 200, 200, 1);
     font-weight: bold;
 }
+*/
 
 .menu-items, .active a {
     font-size: large;
 }
 
+.list-group-item:hover {
+    background-color: rgba(200, 200, 200, 1);
+}
+
 .menu {
-    display: flexbox;
     width: 100%;
 }
 
 .navbar-brand {
+    display: flex;
+    padding: 5px 0px 5px 0px;
     width: 100%;
+    color: black;
+    margin-left: 15px;
+}
+
+.navbar-brand:hover {
+    font-weight: bold;
+    color: black;
 }
 
 .signout-button {

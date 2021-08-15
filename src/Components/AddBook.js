@@ -7,7 +7,6 @@ import '../styles/AddBookCard.css';
 class AddBook extends React.Component {
 
     render() {
-        console.log(this.props)
         
         return(
             <div className='content'>

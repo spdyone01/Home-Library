@@ -37,12 +37,9 @@ class Content extends React.Component {
 
     filterBooks = (term) => {
         this.setState({ filterText: term})
-        console.log(this.state.filterText)
     }
 
     render() {
-
-        console.log(this.props)
         
         return(
             <div className='content'>

@@ -26,13 +26,14 @@ class App extends React.Component {
                 collections: [],
                 readingQueue: [],
                 favorites: [],
-                wanted: [],
+                wishlist: [],
                 readHistory: [],
                 bookListView: 'grid'
             }
         };
     }
-
+    
+    // Checks if book exists in bookList already
     diff = (book, bookList) => {
         var ret = [];
         console.log(book)
@@ -51,7 +52,6 @@ class App extends React.Component {
             }
         }
 
-        // checkExists(bookList, book.isbn[0])
         ret = checkExists(bookList, book.isbn[0])
         return ret;
     };
