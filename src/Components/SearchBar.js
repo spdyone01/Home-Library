@@ -9,6 +9,7 @@ class SearchBar extends React.Component { //need a class based component here be
     onSearchSubmit = (event) => {
         event.preventDefault();
         this.props.onSearchSubmit(this.state.term, this.props.searchType)
+        this.setState({ term: '' });
     }
 
 
