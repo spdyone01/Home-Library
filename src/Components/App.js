@@ -19,7 +19,7 @@ class App extends React.Component {
         this.state = {
             bookList: [],
             user: {
-                id: 23,
+                id: 0,
                 firstName: 'userFirstName',
                 lastName: 'userLastName',
                 userName: 'userName',
